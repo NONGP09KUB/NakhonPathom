@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สุดหล่อ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* จัดการความสูงของหน้าเว็บให้ Footer อยู่ล่างสุดเสมอ */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-vh-100;
+            overflow-x: hidden;
+        }
+        /* ปรับแต่ง Sidebar */
+        .sidebar {
+            width: 250px;
+            min-height: calc(100vh - 56px); /* หักความสูงของ Top Navbar ออก */
+            transition: all 0.3s;
+        }
+        /* เมื่อแสดงผลบนหน้าจอขนาดเล็ก (มือถือ) ให้ซ่อน Sidebar ไว้ก่อน */
+        @media (max-width: 767.98px) {
+            .sidebar {
+                margin-left: -250px;
+            }
+            .sidebar.active {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container-fluid">
+            <button class="btn btn-dark d-md-none me-2" id="sidebarToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <a class="navbar-brand fw-bold" href="#"><i class="fa-solid fa-layer-group me-2"></i>MyDashboard</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="topNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fa-solid fa-bell me-1"></i> แจ้งเตือน</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fa-solid fa-user-circle me-1"></i> ผู้ใช้งาน
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-menu-item dropdown-item" href="#">โปรไฟล์</a></li>
+                            <li><a class="dropdown-menu-item dropdown-item" href="#">ตั้งค่า</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-menu-item dropdown-item text-danger" href="#">ออกจากระบบ</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex flex-grow-1">
+        
+        <div class="sidebar bg-white border-end shadow-sm" id="sidebarMenu">
+            <div class="p-3">
+                <span class="text-muted text-uppercase fw-bold fs-7">เมนูหลัก</span>
+                <ul class="nav flex-column mt-2">
+                    <li class="nav-item mb-1">
+                        <a href="index.php" class="nav-link text-dark bg-light rounded p-2">
+                            <i class="fa-brands fa-facebook"></i> หน้าแรก
+                        </a>
+                    </li>
+                    <li class="nav-item mb-1">
+                        <a href="bmi.php" class="nav-link text-dark p-2">
+                            <i class="fa-solid fa-chart-line me-2 text-success"></i> ดัชณีมวลกาย
+                        </a>
+                    </li>
+                    <li class="nav-item mb-1">
+                        <a href="basic_bootstrab.php" class="nav-link text-dark p-2">
+                            <i class="fa-solid fa-gear me-2 text-secondary"></i> ผู้พัฒนา
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex-grow-1 p-4" >
+
+            <table width="50%" align="center" border="1">
+                <th>รูป1</th>
+                <th>รูป2</th>
+                <th>รูป3</th>
+                <tr >
+                    <td> <img src="https://picsum.photos/200/300/?blur=2" width="50%" alt=""></td>
+                    <td><img src="https://picsum.photos/200/300/?blur"  width="50%"></td>
+                    <td><img src="https://picsum.photos/id/870/200/300?grayscale&blur=2"  width="50%"></td>
+                </tr>
+
+                <tr>
+                    <td>p1</td>
+                    <td>p2</td>
+                    <td>p3</td>
+                </tr>
+
+            </table>
+            <!-- <div class="container-fluid">
+                <div class="row mb-4">
+                    <div class="col">
+                        <h2 class="fw-bold text-dark">หน้าแรก / แดชบอร์ด</h2>
+                        <p class="text-muted">ยินดีต้อนรับสู่ระบบจัดการข้อมูลหลังบ้าน</p>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm p-3 bg-white text-dark">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-1">จำนวนสมาชิก</h6>
+                                    <h3 class="mb-0 fw-bold">1,250 คน</h3>
+                                </div>
+                                <div class="bg-primary-subtle text-primary rounded p-3">
+                                    <i class="fa-solid fa-users fa-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm p-3 bg-white text-dark">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-1">ยอดขายวันนี้</h6>
+                                    <h3 class="mb-0 fw-bold">฿45,000</h3>
+                                </div>
+                                <div class="bg-success-subtle text-success rounded p-3">
+                                    <i class="fa-solid fa-wallet fa-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm p-3 bg-white text-dark">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-1">งานที่ค้างอยู่</h6>
+                                    <h3 class="mb-0 fw-bold">5 งาน</h3>
+                                </div>
+                                <div class="bg-warning-subtle text-warning rounded p-3">
+                                    <i class="fa-solid fa-list-check fa-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> -->
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-white-50 text-center py-3 border-top mt-auto">
+        <div class="container">
+            <small>&copy; 2026 AdminDashboard. All Rights Reserved.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.getElementById('sidebarToggle').addEventListener('click', function () {
+            document.getElementById('sidebarMenu').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
